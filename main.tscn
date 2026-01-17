@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbovav6jr8g2a"]
+
+[ext_resource type="PackedScene" uid="uid://cegbrso3uml8q" path="res://demos/terrain_test.tscn" id="1_terrain"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="TerrainTest" parent="." instance=ExtResource("1_terrain")]
+frequency = 0.002

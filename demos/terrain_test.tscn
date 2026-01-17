@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cegbrso3uml8q"]
+
+[ext_resource type="Script" uid="uid://hu0vfep7i4uw" path="res://demos/terrain_test.gd" id="1_evcqw"]
+
+[node name="TerrainTest" type="Node2D"]
+script = ExtResource("1_evcqw")
