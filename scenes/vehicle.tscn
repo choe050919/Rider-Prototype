@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://vehicle004"]
+
+[ext_resource type="Script" path="res://src/vehicle/vehicle.gd" id="1_vehicle"]
+[ext_resource type="Script" path="res://src/ball/ball_visual.gd" id="2_wheel_visual"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(80, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wheel"]
+radius = 15.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1"]
+friction = 0.8
+
+[node name="Vehicle" type="Node2D"]
+script = ExtResource("1_vehicle")
+
+[node name="Body" type="RigidBody2D" parent="."]
+mass = 3.0
+
+[node name="BodyVisual" type="Polygon2D" parent="Body"]
+color = Color(0.7, 0.7, 0.7, 1)
+polygon = PackedVector2Array(-35, -15, 40, -15, 35, 15, -40, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Camera2D" type="Camera2D" parent="Body"]
+position_smoothing_enabled = true
+position_smoothing_speed = 5.0
+
+[node name="FrontWheel" type="RigidBody2D" parent="."]
+position = Vector2(30, 20)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_1")
+
+[node name="WheelVisual" type="Polygon2D" parent="FrontWheel"]
+script = ExtResource("2_wheel_visual")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontWheel"]
+shape = SubResource("CircleShape2D_wheel")
+
+[node name="RayCast2D" type="RayCast2D" parent="FrontWheel"]
+target_position = Vector2(0, 20)
+collide_with_areas = false
+collide_with_bodies = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="FrontWheel"]
+node_a = NodePath("../../Body")
+node_b = NodePath("..")
+softness = 0.0
+
+[node name="RearWheel" type="RigidBody2D" parent="."]
+position = Vector2(-30, 20)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_1")
+
+[node name="WheelVisual" type="Polygon2D" parent="RearWheel"]
+script = ExtResource("2_wheel_visual")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RearWheel"]
+shape = SubResource("CircleShape2D_wheel")
+
+[node name="RayCast2D" type="RayCast2D" parent="RearWheel"]
+target_position = Vector2(0, 20)
+collide_with_areas = false
+collide_with_bodies = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="RearWheel"]
+node_a = NodePath("../../Body")
+node_b = NodePath("..")
+softness = 0.0

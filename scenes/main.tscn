@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://rftifjbgje2d"]
 
 [ext_resource type="Script" uid="uid://0jxjaimbgjko" path="res://src/terrain/terrain_manager.gd" id="1_terrain_manager"]
-[ext_resource type="PackedScene" path="res://scenes/ball.tscn" id="2_ball"]
+[ext_resource type="PackedScene" uid="uid://vehicle004" path="res://scenes/vehicle.tscn" id="2_vehicle"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Ball" parent="." instance=ExtResource("2_ball")]
+[node name="Vehicle" parent="." instance=ExtResource("2_vehicle")]
 position = Vector2(200, 200)
 
 [node name="TerrainManager" type="Node2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("1_terrain_manager")
-target = NodePath("../Ball")
+target = NodePath("../Vehicle")
 frequency = 0.002
