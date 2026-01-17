@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://do6w522dtmk47"]
+
+[ext_resource type="Script" uid="uid://0jxjaimbgjko" path="res://src/terrain/terrain_manager.gd" id="1_terrain_manager"]
+[ext_resource type="PackedScene" uid="uid://vehicle004" path="res://scenes/vehicle.tscn" id="2_vehicle"]
+
+[node name="VehicleGame" type="Node2D"]
+
+[node name="Vehicle" parent="." instance=ExtResource("2_vehicle")]
+position = Vector2(200, 200)
+
+[node name="TerrainManager" type="Node2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("1_terrain_manager")
+target = NodePath("../Vehicle")

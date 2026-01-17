@@ -11,7 +11,7 @@ extends Node2D
 
 # 지형 생성 파라미터
 @export_group("Terrain Parameters")
-@export var frequency: float = 0.02
+@export var frequency: float = 0.002
 @export var amplitude: float = 100.0
 @export var ground_level: float = 300.0
 @export var terrain_seed: int = 42
